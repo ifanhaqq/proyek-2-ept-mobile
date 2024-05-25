@@ -1,5 +1,5 @@
 import axios from "../utils/axios"
-import { getToken, setToken } from "./TokenServices"
+import { setToken } from "./TokenServices"
 
 export async function login(credentials) {
     const {data} = await axios.post("/mobile-login", credentials)
@@ -7,29 +7,19 @@ export async function login(credentials) {
 
 }
 
+export async function register(registerInfo) {
+    await axios.post("/mobile-register", registerInfo)
+}
+
 export async function loadUser() {
-    const token = await getToken()
-    const {data: user} = await axios.get("/user", {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    })
+    const {data: user} = await axios.get("/user")
 
     return user;
 }
 
 export async function logout() {
-    const token = await getToken()
 
-    await axios.post(
-        "/mobile-logout",
-        {},
-        {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }
-    )
+    await axios.post("/mobile-logout", {})
 
     await setToken(null)
 }

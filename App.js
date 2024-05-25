@@ -6,6 +6,7 @@ import AuthContext from "./contexts/AuthContext";
 import { loadUser } from "./services/AuthServices";
 import { useState, useEffect } from "react";
 import SplashScreen from "./screens/SplashScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +45,7 @@ export default function App() {
           ) : (
             <>
               <Stack.Screen name="Login" component={LoginScreen} />
+              <Stack.Screen name="Create an account" component={RegisterScreen} />
             </>
           )}
 

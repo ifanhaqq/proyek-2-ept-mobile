@@ -7,7 +7,7 @@ import AuthContext from '../contexts/AuthContext'
 
 
 
-export default function () {
+export default function ({ navigation }) {
     const { setUser } = useContext(AuthContext)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -46,6 +46,9 @@ export default function () {
                                onChangeText={(text) => setPassword(text)}
                                errors={errors.password} />
                 <Button title='Login' onPress={handleLogin} />
+                <Button title='Create an account' onPress={() => {
+                    navigation.navigate("Create an account")
+                }} />
             </View>
         </SafeAreaView>
     )
