@@ -18,5 +18,21 @@ export async function loadUser() {
     return user;
 }
 
+export async function logout() {
+    const token = await getToken()
+
+    await axios.post(
+        "/mobile-logout",
+        {},
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    )
+
+    await setToken(null)
+}
+
 
 

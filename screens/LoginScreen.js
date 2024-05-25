@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { SafeAreaView,  View, StyleSheet, Button, Platform } from 'react-native'
 import axios from '../utils/axios'
 import FormTextField from '../components/FormTextField'
 import { login, loadUser } from '../services/AuthServices'
+import AuthContext from '../contexts/AuthContext'
 
 
 
 export default function () {
+    const { setUser } = useContext(AuthContext)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [errors, setErrors] = useState({})
@@ -21,9 +23,8 @@ export default function () {
             })
 
             const user = await loadUser()
-
-            console.log(user)
-            console.log("res", data)
+            
+            setUser(user)
         } catch (e) {
             if (e.response?.status === 422) {
                 setErrors(e.response.data.errors)
