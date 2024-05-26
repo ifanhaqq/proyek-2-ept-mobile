@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react'
 import { SafeAreaView,  View, StyleSheet, Button, Platform } from 'react-native'
-import axios from '../utils/axios'
 import FormTextField from '../components/FormTextField'
 import { login, loadUser } from '../services/AuthServices'
 import AuthContext from '../contexts/AuthContext'

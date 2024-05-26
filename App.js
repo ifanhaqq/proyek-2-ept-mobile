@@ -7,8 +7,18 @@ import { loadUser } from "./services/AuthServices";
 import { useState, useEffect } from "react";
 import SplashScreen from "./screens/SplashScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function LoggedTab() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+    </Tab.Navigator>
+  )
+}
 
 
 export default function App() {
@@ -40,7 +50,10 @@ export default function App() {
         <Stack.Navigator>
           {user ? (
             <>
-              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="Logged" 
+                            component={LoggedTab}
+                            options={{ headerShown: false}}
+                            />
             </>
           ) : (
             <>
