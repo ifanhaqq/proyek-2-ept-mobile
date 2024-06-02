@@ -2,7 +2,7 @@ import axiosLib from 'axios'
 import { getToken } from '../services/TokenServices'
 
 const axios = axiosLib.create({
-    baseURL: "http://192.168.20.99:8000/api",
+    baseURL: "http://10.0.165.133:8000/api",
     headers: {
         Accept: "application/json"
     }

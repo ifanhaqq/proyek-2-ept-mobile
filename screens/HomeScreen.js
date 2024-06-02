@@ -14,7 +14,7 @@ export default function () {
     return (
         <SafeAreaView>
             <Text>Welcome, {user.name}</Text>
-            <Button title='Logout' onPress={handleLogout} />
+            <Button title='Logout' onPress={handleLogout} color="#23304f"  />
         </SafeAreaView>
     )
 }
